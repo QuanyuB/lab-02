@@ -90,8 +90,10 @@ plastic_data_all %>% count(region, sort = TRUE)
 # Write your code here to answer exercise 2
 plastic_data_all %>% mutate(total_mismanage_plastic = mismanaged_plastic*population)
 
+plastic_data_all %>% group_by(region) %>% summarise(mean_total = mean(total_mismanage_plastic))
 
-
+mean_value <- plastic_data_all %>% group_by(region) %>% summarise(mean_total = mean(total_mismanage_plastic))
+mean_value %>% arrange(desc(mean_total))
 ```
 
 
